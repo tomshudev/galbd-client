@@ -1,0 +1,28 @@
+@import "../../../../styles/styles.less";
+
+.missions-list {
+  .mission-summary {
+    display: flex;
+    align-items: center;
+    height: 5rem;
+    cursor: pointer;
+
+    gal-mission-status-checkbox {
+      margin-left: 2rem;
+    }
+
+    .name {
+      color: @text-color;
+      font-size: 1.7rem;
+      font-weight: 400;
+      border-bottom: 1px transparent solid;
+      transition: all 0.2s;
+    }
+
+    .name.selected,
+    &:hover > .name {
+      color: @secondary-color;
+      border-bottom: 1px @secondary-color solid;
+    }
+  }
+}

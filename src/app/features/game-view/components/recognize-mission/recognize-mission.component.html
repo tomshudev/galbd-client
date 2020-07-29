@@ -1,0 +1,14 @@
+<div class="recognize">
+  <div class="images" *ngFor="let image of images">
+    <div class="recognize-image">
+      <img src="{{ image.url }}" alt="{{ image.id }}" />
+      <gal-input
+        [value]="image.answer"
+        [isDisabled]="isAdmin || isSolved"
+        (onChange)="answerChanged(image.id, $event)"
+        [matTooltip]="'אושר כבר על ידי מנהל'"
+        [matTooltipDisabled]="!isSolved"
+      ></gal-input>
+    </div>
+  </div>
+</div>

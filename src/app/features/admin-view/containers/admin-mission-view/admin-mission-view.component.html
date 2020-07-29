@@ -1,0 +1,56 @@
+<div class="mission-view">
+  <div class="mission-data">
+    <gal-mission-headline
+      [isAdmin]="true"
+      [mission]="selectedMission"
+    ></gal-mission-headline>
+
+    <div class="mission" [ngSwitch]="selectedMission.type">
+      <gal-upload-image-mission
+        *ngSwitchCase="missionTypes.PHOTO"
+        [isAdmin]="true"
+        [missionID]="selectedMission.id"
+        [imageUri]="
+          selectedMission.data && selectedMission.data.imageUri
+            ? selectedMission.data.imageUri
+            : undefined
+        "
+      ></gal-upload-image-mission>
+      <gal-recognize-mission
+        *ngSwitchCase="missionTypes.RECOGNIZE"
+        [isAdmin]="true"
+        [images]="selectedMission.data.images"
+      ></gal-recognize-mission>
+    </div>
+  </div>
+
+  <div class="buttons">
+    <gal-button
+      [isHidden]="selectedMission.index <= 0"
+      [text]="'קודם'"
+      (onButtonClicked)="
+        onSelectedMissionChanged.emit(selectedMission.index - 1)
+      "
+    ></gal-button>
+
+    <gal-button
+      [isDisabled]="selectedMission.isSolved"
+      [text]="'אשר משימה'"
+      (onButtonClicked)="approveMission(true)"
+    ></gal-button>
+
+    <gal-button
+      [isDisabled]="selectedMission.isSolved"
+      [text]="'דחה משימה'"
+      (onButtonClicked)="approveMission(false)"
+    ></gal-button>
+
+    <gal-button
+      [isHidden]="selectedMission.index >= missionsCount - 1"
+      [text]="'הבא'"
+      (onButtonClicked)="
+        onSelectedMissionChanged.emit(selectedMission.index + 1)
+      "
+    ></gal-button>
+  </div>
+</div>

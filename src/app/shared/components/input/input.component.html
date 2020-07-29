@@ -1,0 +1,14 @@
+<input
+  class="input"
+  type="text"
+  [attr.disabled]="isDisabled ? '' : null"
+  [value]="value ? value : null"
+  (change)="onChange.emit($event.target.value)"
+  *ngIf="!isPassword"
+/>
+<input
+  class="input"
+  type="password"
+  (change)="onChange.emit($event.target.value)"
+  *ngIf="isPassword"
+/>

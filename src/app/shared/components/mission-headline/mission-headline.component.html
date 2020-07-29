@@ -1,0 +1,24 @@
+<div class="mission-headline">
+  <div class="name">{{ mission.name }}</div>
+  <div class="explanation">{{ mission.explanation }}</div>
+  <div
+    class="status"
+    *ngIf="
+      !isAdmin &&
+      mission.doesMissionNeedsApproval &&
+      mission.isWaitingForApproval !== undefined
+    "
+  >
+    <div class="text" [ngSwitch]="status">
+      <span *ngSwitchCase="missionStatus.APPROVED" class="approved"
+        >(המשימה אושרה על ידי מנהל)</span
+      >
+      <span *ngSwitchCase="missionStatus.DENIED" class="denied"
+        >(המשימה נדחתה על ידי מנהל)</span
+      >
+      <span *ngSwitchCase="missionStatus.WAITING" class="waiting"
+        >(המשימה ממתינה לאישור מנהל)</span
+      >
+    </div>
+  </div>
+</div>

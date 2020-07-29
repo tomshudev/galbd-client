@@ -1,0 +1,22 @@
+<div class="admin-view">
+  <gal-sidebar
+    [user]="user$ | async"
+    [isAdmin]="true"
+    [missions]="missions"
+    [currentProgress]="currentProgress"
+    [selectedMission]="selectedMission"
+    (logout)="usersService.logout()"
+    (onMissionSelected)="missionsService.selectMission($event)"
+  ></gal-sidebar>
+
+  <div class="no-selected-mission" *ngIf="!selectedMission">
+    בחר משימה &nbsp; (:
+  </div>
+
+  <gal-admin-mission-view
+    *ngIf="selectedMission"
+    [selectedMission]="selectedMission"
+    [missionsCount]="missions.length"
+    (onSelectedMissionChanged)="missionsService.selectMission(missions[$event])"
+  ></gal-admin-mission-view>
+</div>

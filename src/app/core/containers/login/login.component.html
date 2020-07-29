@@ -1,0 +1,17 @@
+<div class="login">
+  <div class="data">
+    <h1>ברוכה הבאה, לפני שנתחיל צריך להתחבר (:</h1>
+
+    <mat-form-field class="example-full-width">
+      <mat-label>שם משתמש</mat-label>
+      <input matInput value="" [(ngModel)]="username" />
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <mat-label>סיסמה</mat-label>
+      <input matInput value="" type="password" [(ngModel)]="password" />
+    </mat-form-field>
+
+    <div class="sign-in" (click)="signIn()">התחבר</div>
+  </div>
+</div>

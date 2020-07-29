@@ -1,0 +1,14 @@
+<div class="pretty p-icon p-round p-bigger">
+  <input type="radio" name="{{ missionID }}" checked disabled />
+  <div
+    class="state"
+    [ngClass]="{
+      'p-danger-o': !isSolved && !isWaitingForApproval,
+      'p-warning-o': isWaitingForApproval,
+      'p-success-o': isSolved
+    }"
+  >
+    <i class="icon mdi mdi-check"></i>
+    <label></label>
+  </div>
+</div>

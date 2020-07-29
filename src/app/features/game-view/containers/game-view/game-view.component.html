@@ -1,0 +1,21 @@
+<div class="game-view">
+  <gal-sidebar
+    [user]="user$ | async"
+    [missions]="missions"
+    [currentProgress]="currentProgress"
+    [selectedMission]="selectedMission"
+    (logout)="usersService.logout()"
+    (onMissionSelected)="missionsService.selectMission($event)"
+  ></gal-sidebar>
+
+  <div class="no-selected-mission" *ngIf="!selectedMission">
+    בחר משימה &nbsp; (:
+  </div>
+
+  <gal-mission-view
+    *ngIf="selectedMission"
+    [selectedMission]="selectedMission"
+    [missionsCount]="missions.length"
+    (onSelectedMissionChanged)="missionsService.selectMission(missions[$event])"
+  ></gal-mission-view>
+</div>

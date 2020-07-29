@@ -1,0 +1,22 @@
+<div class="missions-list">
+  <div
+    class="mission-summary"
+    *ngFor="let mission of missions"
+    (click)="onMissionSelected.emit(mission)"
+  >
+    <gal-mission-status-checkbox
+      [missionID]="mission.id"
+      [isSolved]="mission.isSolved"
+      [isApproved]="mission.isApproved"
+      [isWaitingForApproval]="mission.isWaitingForApproval"
+    ></gal-mission-status-checkbox>
+    <div
+      class="name"
+      [ngClass]="{
+        selected: selectedMission && selectedMission.id === mission.id
+      }"
+    >
+      {{ mission.name }}
+    </div>
+  </div>
+</div>

@@ -1,0 +1,67 @@
+<div class="mission-view">
+  <div class="mission-data">
+    <gal-mission-headline [mission]="selectedMission"></gal-mission-headline>
+
+    <div class="mission" [ngSwitch]="selectedMission.type">
+      <gal-password-mission
+        *ngSwitchCase="missionTypes.PASSWORD"
+        (onPasswordChanges)="missionWasUpdated($event)"
+        [isSolved]="selectedMission.isSolved"
+        [correctAnswer]="selectedMission.data.validPassword"
+      ></gal-password-mission>
+      <gal-upload-image-mission
+        *ngSwitchCase="missionTypes.PHOTO"
+        [isSolved]="selectedMission.isSolved"
+        [missionID]="selectedMission.id"
+        [imageUri]="
+          selectedMission.data && selectedMission.data.imageUri
+            ? selectedMission.data.imageUri
+            : undefined
+        "
+        (onImageUploaded)="missionWasUpdated($event)"
+      ></gal-upload-image-mission>
+      <gal-order-mission
+        *ngSwitchCase="missionTypes.ORDER"
+        [isSolved]="selectedMission.isSolved"
+        [items]="selectedMission.data.objects"
+        (onOrderChanged)="missionWasUpdated($event)"
+      ></gal-order-mission>
+      <gal-quiz-mission
+        *ngSwitchCase="missionTypes.QUIZ"
+        [isSolved]="selectedMission.isSolved"
+        [questions]="selectedMission.data.questions"
+        (onQuizAnswersChanged)="missionWasUpdated($event)"
+      ></gal-quiz-mission>
+      <gal-recognize-mission
+        *ngSwitchCase="missionTypes.RECOGNIZE"
+        [isSolved]="selectedMission.isSolved"
+        [images]="selectedMission.data.images"
+        (onAnswersChanged)="missionWasUpdated($event)"
+      ></gal-recognize-mission>
+    </div>
+  </div>
+
+  <div class="buttons">
+    <gal-button
+      [isHidden]="selectedMission.index <= 0"
+      [text]="'קודם'"
+      (onButtonClicked)="
+        onSelectedMissionChanged.emit(selectedMission.index - 1)
+      "
+    ></gal-button>
+
+    <gal-button
+      [isDisabled]="selectedMission.isSolved"
+      [text]="selectedMission.doesMissionNeedsApproval ? 'שלח לבדיקה' : 'בדוק'"
+      (onButtonClicked)="validateMission()"
+    ></gal-button>
+
+    <gal-button
+      [isHidden]="selectedMission.index >= missionsCount - 1"
+      [text]="'הבא'"
+      (onButtonClicked)="
+        onSelectedMissionChanged.emit(selectedMission.index + 1)
+      "
+    ></gal-button>
+  </div>
+</div>

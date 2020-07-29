@@ -1,0 +1,62 @@
+@import "../../../../styles/styles.less";
+
+.sidebar {
+  height: 100%;
+  background-color: @primary-color;
+  color: @text-color;
+
+  display: grid;
+  grid-template-rows: 15rem 6rem auto;
+  justify-items: center;
+
+  .header {
+    display: flex;
+    align-items: center;
+    padding: 0 2rem;
+
+    .welcome {
+      display: flex;
+      flex-direction: column;
+      color: @text-color;
+      margin-right: 2rem;
+
+      .name {
+        font-size: 2.3rem;
+        font-weight: 300;
+      }
+
+      .logout {
+        border-bottom: 1px solid @link-color;
+        cursor: pointer;
+        transition: all 0.2s;
+        padding: 0.1rem 0.2rem;
+        width: fit-content;
+
+        &:hover {
+          color: @link-color;
+        }
+      }
+    }
+  }
+
+  .current-progress {
+    font-size: 2rem;
+    direction: ltr;
+    text-align: center;
+
+    span {
+      cursor: default;
+    }
+  }
+
+  gal-missions-list {
+    height: calc(100vh - 15rem - 6rem);
+    width: 100%;
+    overflow-y: auto;
+  }
+
+  h1 {
+    text-align: center;
+    width: 75%;
+  }
+}

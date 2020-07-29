@@ -1,0 +1,27 @@
+@import "../../../../styles/styles.less";
+
+.button {
+  border: none;
+  outline: none;
+  background-color: @success-color;
+  border-radius: 1rem;
+  font-size: 1.8rem;
+  color: @text-color;
+  cursor: pointer;
+  width: 15rem;
+  height: 5rem;
+  transition: all.2s;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &.disabled {
+    cursor: not-allowed;
+    background-color: lighten(@success-color, 10%);
+  }
+
+  &:not(.disabled):hover {
+    background-color: darken(@success-color, 10%);
+  }
+}

@@ -1,0 +1,22 @@
+<div class="congratulations">
+  <h1>מזל טוב גל!</h1>
+  <h2>סיימת את המשחק בהצלחה!</h2>
+
+  <span class="nz"
+    >עכשיו קיבלת נקודת ציון: &nbsp; &nbsp;
+    <span class="progress" dir="ltr">{{ currentProgress$ | async }}</span></span
+  >
+  <div class="link-for-location">
+    <span>לחצי כאן כדי לראות את המקום: &nbsp; &nbsp;</span>
+    <a
+      target="_blank"
+      href="https://www.google.com/maps/place/%D7%9E%D7%9C%D7%95%D7%9F+%D7%A1%D7%A4%D7%90+%D7%90%D7%9E%D7%99%D7%A8%D7%99+%D7%94%D7%92%D7%9C%D7%99%D7%9C+-+Amirey+Hagalil+Spa+Hotel%E2%80%AD/@32.93757,35.4361413,17z/data=!4m16!1m7!3m6!1s0x0:0x0!2zMzLCsDU2JzE1LjMiTiAzNcKwMjYnMTAuMSJF!3b1!8m2!3d32.93757!4d35.4361413!3m7!1s0x151c24d6984e299b:0xebc2ba1da8f4c707!5m2!4m1!1i2!8m2!3d32.9375698!4d35.4383299"
+      >https://maps.google.com/{{ currentProgress$ | async }}</a
+    >
+  </div>
+
+  <div class="time">
+    <span>6 / 8 / 2020</span>
+    <span>9 : 00</span>
+  </div>
+</div>

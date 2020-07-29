@@ -1,0 +1,17 @@
+<div class="upload-image-mission">
+  <input
+    #file
+    hidden="true"
+    type="file"
+    onclick="this.value=null"
+    (change)="imageSelected($event)"
+    accept="*"
+  />
+  <gal-button
+    (onButtonClicked)="file.click()"
+    [text]="'בחרי תמונה'"
+    *ngIf="!isAdmin"
+  ></gal-button>
+
+  <img src="{{ imageUri }}" alt="image" *ngIf="imageUri" />
+</div>

@@ -1,0 +1,32 @@
+<div class="sidebar">
+  <div class="header">
+    <gal-profile-picture
+      [image]="user.profilePictureLink"
+    ></gal-profile-picture>
+    <div class="welcome">
+      <span class="name">שלום, {{ user.name }}</span>
+      <span class="logout" (click)="logout.emit()">התנתק</span>
+    </div>
+  </div>
+
+  <div class="current-progress">
+    <span
+      [matTooltip]="
+        'תווים אלו מייצגים את ההתקדמות שלך במשחק, כל משימה מזכה אותך בספרה אחת'
+      "
+    >
+      {{ currentProgress }}
+    </span>
+  </div>
+
+  <gal-missions-list
+    *ngIf="missions && missions.length > 0"
+    [missions]="missions"
+    [selectedMission]="selectedMission"
+    (onMissionSelected)="onMissionSelected.emit($event)"
+  ></gal-missions-list>
+
+  <h1 *ngIf="isAdmin && (!missions || missions.length === 0)">
+    אין משימות שממתינות לך (:
+  </h1>
+</div>

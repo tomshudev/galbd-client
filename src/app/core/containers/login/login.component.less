@@ -1,0 +1,44 @@
+@import "../../../../styles/styles.less";
+
+.login {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: @primary-color;
+
+  color: @text-color;
+
+  .data {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    h1 {
+      margin-bottom: 2rem;
+    }
+
+    mat-form-field {
+      width: 25rem;
+      color: @text-color;
+
+      ::-webkit-input-placeholder {
+        color: @text-color !important;
+      }
+    }
+
+    .sign-in {
+      width: 10rem;
+      border-radius: 1rem;
+      padding: 1rem 2rem;
+      background-color: @success-color;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-align: center;
+
+      &:hover {
+        background-color: darken(@success-color, 10%);
+      }
+    }
+  }
+}

@@ -1,0 +1,23 @@
+<div class="order-mission">
+  <div
+    cdkDropList
+    class="list"
+    [cdkDropListDisabled]="isSolved"
+    (cdkDropListDropped)="drop($event)"
+  >
+    <div
+      class="item"
+      [ngClass]="{ disabled: isSolved }"
+      *ngFor="let item of listItems"
+      cdkDrag
+    >
+      <div class="name">{{ item.name }}</div>
+      <img
+        class="image"
+        *ngIf="item.pictureLink"
+        src="{{ item.pictureLink }}"
+        alt="{{ item.name }}"
+      />
+    </div>
+  </div>
+</div>

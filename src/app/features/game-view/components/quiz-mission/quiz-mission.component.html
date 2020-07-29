@@ -1,0 +1,19 @@
+<div class="quiz-mission">
+  <div class="question" *ngFor="let question of questions">
+    <div class="title">{{ question.question }}</div>
+    <mat-radio-group
+      class="options"
+      [name]="question.id"
+      [value]="isSolved ? question.correctAnswer : undefined"
+      (change)="answerChanged(question.id, $event)"
+      [disabled]="isSolved"
+    >
+      <mat-radio-button
+        class="option"
+        *ngFor="let option of question.options"
+        [value]="option"
+        >{{ option }}</mat-radio-button
+      >
+    </mat-radio-group>
+  </div>
+</div>

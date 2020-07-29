@@ -1,0 +1,74 @@
+@import "colors.less";
+@import "variables.less";
+@import "../../node_modules/@angular/material/prebuilt-themes/indigo-pink.css";
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-size: 1.4rem;
+}
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: "Rubik", sans-serif;
+}
+
+.mat-form-field-appearance-legacy .mat-form-field-label {
+  /*change color of label*/
+  color: darken(@text-color, 10%) !important;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px @primary-color inset !important;
+  -webkit-text-fill-color: @text-color;
+}
+
+.pretty {
+  font-size: 2.5rem;
+  display: block !important;
+  line-height: initial;
+}
+
+.pretty .state label:before {
+  border-width: 2px !important;
+}
+
+.pretty input[disabled] ~ * {
+  opacity: 1 !important;
+}
+
+.pretty.p-bigger .icon,
+.pretty.p-bigger .img,
+.pretty.p-bigger .svg,
+.pretty.p-bigger label:after,
+.pretty.p-bigger label:before {
+  top: calc((0% - (100% - 1em))) !important;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+.mat-tooltip {
+  font-size: 1.6rem !important;
+  font-family: "Rubik" !important;
+  font-weight: 100 !important;
+  padding: 1rem 2rem !important;
+}

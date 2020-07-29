@@ -1,0 +1,24 @@
+@import "../../../../styles/styles.less";
+
+.input {
+  border: 1px solid @primary-color;
+  color: @primary-color;
+  border-radius: 1rem;
+  background-color: transparent;
+
+  outline: none;
+
+  padding: 1rem 2rem;
+  min-width: 25rem;
+
+  text-align: center;
+
+  font-size: 2rem;
+  font-family: "Rubik";
+  font-weight: 100;
+}
+
+input:disabled {
+  background-color: darken(@text-color, 9%);
+  color: lighten(@primary-color, 8%);
+}

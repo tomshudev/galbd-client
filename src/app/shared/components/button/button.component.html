@@ -1,0 +1,10 @@
+<button
+  class="button"
+  [ngClass]="{ disabled: isDisabled }"
+  (click)="isDisabled ? undefined : onButtonClicked.emit()"
+  [hidden]="isHidden"
+  [matTooltipDisabled]="!isDisabled"
+  [matTooltip]="'המשימה כבר פוצחה (:'"
+>
+  {{ text }}
+</button>
