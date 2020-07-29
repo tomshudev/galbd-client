@@ -15,8 +15,8 @@ export class ConfigService {
   // };
 
   config: Config = {
-    apiUri: 'http://localhost:3000/api',
-    imagesUri: 'http://localhost:3000',
+    apiUri: 'http://3.22.240.21:3000/api',
+    imagesUri: 'http://3.22.240.21:3000',
   };
 
   constructor() {}
