@@ -59,3 +59,16 @@
 .list.cdk-drop-list-dragging .item:not(.cdk-drag-placeholder) {
   transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
 }
+
+@media (max-width: 500px) {
+  .list {
+    width: 30rem;
+  }
+
+  .item {
+    .image {
+      width: 10rem;
+      height: 10rem;
+    }
+  }
+}

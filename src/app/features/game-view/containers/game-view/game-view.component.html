@@ -1,11 +1,16 @@
 <div class="game-view">
+  <div class="sidebar__trigger" href="#0">
+    <i class="fa fa-bars" (click)="toggleSidebar()"></i>
+  </div>
+
   <gal-sidebar
+    [ngClass]="{ active: isSidebarOpen$ | async }"
     [user]="user$ | async"
     [missions]="missions"
     [currentProgress]="currentProgress"
     [selectedMission]="selectedMission"
     (logout)="usersService.logout()"
-    (onMissionSelected)="missionsService.selectMission($event)"
+    (onMissionSelected)="missionSelected($event)"
   ></gal-sidebar>
 
   <div class="no-selected-mission" *ngIf="!selectedMission">

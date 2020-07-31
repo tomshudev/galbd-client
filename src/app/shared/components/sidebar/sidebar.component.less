@@ -12,7 +12,6 @@
   .header {
     display: flex;
     align-items: center;
-    padding: 0 2rem;
 
     .welcome {
       display: flex;
@@ -58,5 +57,13 @@
   h1 {
     text-align: center;
     width: 75%;
+  }
+}
+
+@media (max-width: 900px) {
+  .sidebar {
+    gal-missions-list {
+      height: calc(100vh - 15rem - 6rem - @nav-height);
+    }
   }
 }
