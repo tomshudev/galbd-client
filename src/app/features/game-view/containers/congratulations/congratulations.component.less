@@ -6,6 +6,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  text-align: center;
 
   h1 {
     font-size: 5rem;
@@ -27,6 +28,10 @@
   .link-for-location {
     margin: 4rem 0;
     font-size: 3rem;
+
+    &__small {
+      display: none;
+    }
   }
 
   a:link,
@@ -49,5 +54,21 @@
     font-weight: 100;
     font-size: 5rem;
     direction: ltr;
+  }
+}
+
+@media (max-width: 900px) {
+  .congratulations {
+    .nz {
+      font-size: 3rem;
+    }
+
+    .link-for-location__big {
+      display: none;
+    }
+
+    .link-for-location__small {
+      display: block;
+    }
   }
 }
