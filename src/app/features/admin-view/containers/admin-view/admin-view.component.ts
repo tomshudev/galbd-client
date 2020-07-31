@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Subscription, Observable } from 'rxjs';
 import { Mission } from 'src/app/core/models/mission.model';
 import { Store } from '@ngrx/store';
 import { UsersService } from 'src/app/core/services/users/users.service';
 import { MissionsService } from 'src/app/core/services/missions/missions.service';
 import { HttpClient } from '@angular/common/http';
 import { getLoggedUser } from 'src/app/core/reducers/users.reducer';
+import { ToggleSidebar } from 'src/app/core/actions/layout.actions';
+import { getIsSidebarOpen } from 'src/app/core/reducers/layout.reducer';
 
 @Component({
   selector: 'gal-admin-view',
@@ -17,6 +19,7 @@ export class AdminViewComponent implements OnInit {
   missions: Mission[];
   selectedMission: Mission;
   currentProgress: string;
+  isSidebarOpen$: Observable<boolean> = this.store.select(getIsSidebarOpen);
 
   constructor(
     private store: Store,
@@ -41,4 +44,13 @@ export class AdminViewComponent implements OnInit {
   ngOnInit(): void {}
 
   user$ = this.store.select(getLoggedUser);
+
+  missionSelected(mission: Mission) {
+    this.missionsService.selectMission(mission);
+    this.toggleSidebar();
+  }
+
+  toggleSidebar() {
+    this.store.dispatch(ToggleSidebar());
+  }
 }

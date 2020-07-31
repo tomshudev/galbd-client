@@ -1,6 +1,8 @@
 @import "../../../../styles/styles.less";
 
 .missions-list {
+  padding-bottom: 2rem;
+
   .mission-summary {
     display: flex;
     align-items: center;
@@ -24,5 +26,11 @@
       color: @secondary-color;
       border-bottom: 1px @secondary-color solid;
     }
+  }
+}
+
+@media (max-width: 900px) {
+  .mission-summary {
+    justify-content: center;
   }
 }

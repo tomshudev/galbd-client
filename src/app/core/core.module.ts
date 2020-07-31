@@ -14,6 +14,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { StoreModule } from '@ngrx/store';
 import { usersReducer } from './reducers/users.reducer';
 import { missionsReducer } from './reducers/missions.reducer';
+import { layoutReducer } from './reducers/layout.reducer';
 
 @NgModule({
   declarations: [AppComponent, MainComponent, LoginComponent],
@@ -27,7 +28,11 @@ import { missionsReducer } from './reducers/missions.reducer';
     AdminViewModule,
     GameViewModule,
     AppRoutingModule,
-    StoreModule.forRoot({ users: usersReducer, missions: missionsReducer }),
+    StoreModule.forRoot({
+      users: usersReducer,
+      missions: missionsReducer,
+      layout: layoutReducer,
+    }),
   ],
   exports: [AppComponent],
 })

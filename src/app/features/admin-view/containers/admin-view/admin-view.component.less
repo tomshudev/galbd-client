@@ -19,4 +19,61 @@
   gal-mission-view {
     color: @primary-color;
   }
+
+  .sidebar__trigger {
+    z-index: 2;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: @nav-height;
+    background: @primary-color;
+    display: none;
+    padding: 0 2rem;
+
+    & > i {
+      display: inline-block;
+      color: @text-color;
+      font-size: 2.5rem;
+    }
+  }
+}
+
+/* Mobile First */
+@media (max-width: 900px) {
+  /* Sidebar */
+  .sidebar__trigger {
+    display: flex !important;
+    align-items: center;
+  }
+
+  .admin-view {
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: @nav-height auto;
+  }
+
+  .no-selected-mission,
+  gal-admin-mission-view {
+    grid-row: 2 e("/") 3;
+  }
+
+  gal-sidebar {
+    position: fixed;
+    width: 100%;
+    height: calc(100vh - @nav-height);
+    top: @nav-height;
+    right: 0;
+    background-color: inherit;
+    z-index: 2;
+    transform: translateX(100%);
+
+    transition: all 0.5s linear;
+    opacity: 0.5;
+
+    &.active {
+      transform: translateX(0%);
+      opacity: 1;
+    }
+  }
 }

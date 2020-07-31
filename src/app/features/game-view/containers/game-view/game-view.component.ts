@@ -1,13 +1,15 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { throwError, Subscription } from 'rxjs';
+import { throwError, Subscription, Observable } from 'rxjs';
 import { catchError, take } from 'rxjs/operators';
 import { getLoggedUser } from 'src/app/core/reducers/users.reducer';
 import { UsersService } from 'src/app/core/services/users/users.service';
 import { MissionsService } from '../../../../core/services/missions/missions.service';
 import { Mission, MissionTypes } from 'src/app/core/models/mission.model';
 import { Router } from '@angular/router';
+import { ToggleSidebar } from 'src/app/core/actions/layout.actions';
+import { getIsSidebarOpen } from 'src/app/core/reducers/layout.reducer';
 
 @Component({
   selector: 'gal-game-view',
@@ -19,6 +21,7 @@ export class GameViewComponent implements OnInit {
   missions: Mission[];
   selectedMission: Mission;
   currentProgress: string;
+  isSidebarOpen$: Observable<boolean> = this.store.select(getIsSidebarOpen);
 
   constructor(
     private store: Store,
@@ -47,4 +50,13 @@ export class GameViewComponent implements OnInit {
   ngOnInit(): void {}
 
   user$ = this.store.select(getLoggedUser);
+
+  missionSelected(mission: Mission) {
+    this.missionsService.selectMission(mission);
+    this.toggleSidebar();
+  }
+
+  toggleSidebar() {
+    this.store.dispatch(ToggleSidebar());
+  }
 }
