@@ -1,4 +1,11 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Input,
+  Output,
+  EventEmitter,
+  OnChanges,
+} from '@angular/core';
 import { MatRadioChange } from '@angular/material/radio';
 
 export type QuizQuestion = {
@@ -14,7 +21,7 @@ export type QuizQuestion = {
   templateUrl: './quiz-mission.component.html',
   styleUrls: ['./quiz-mission.component.less'],
 })
-export class QuizMissionComponent implements OnInit {
+export class QuizMissionComponent implements OnInit, OnChanges {
   @Input() questions: QuizQuestion[];
   @Input() isSolved: boolean;
   @Output() onQuizAnswersChanged: EventEmitter<
@@ -24,6 +31,15 @@ export class QuizMissionComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {
+    this.questions = this.questions.map((question) => ({
+      ...question,
+      answer: undefined,
+    }));
+
+    this.onQuizAnswersChanged.emit(this.questions);
+  }
+
+  ngOnChanges() {
     this.questions = this.questions.map((question) => ({
       ...question,
       answer: undefined,
